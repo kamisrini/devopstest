@@ -21,7 +21,7 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-# copy from s1 directory to 'a' (a stands for artifact) directory on a agent
+# copy from s1 (staging) directory to 'a' (artifact) directory on a agent
 # copy files task
 - task: CopyFiles@2
   inputs:
