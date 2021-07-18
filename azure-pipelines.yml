@@ -22,11 +22,13 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 # copy from s1 directory to 'a' (a stands for artifact) directory on a agent
+# copy files task
 - task: CopyFiles@2
   inputs:
     Contents: '**/.jar'
     TargetFolder: '$(build.artifactstagingdirectory)'
 #copy from 'a' dircetory to project director
+#publish build artifacts task
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
