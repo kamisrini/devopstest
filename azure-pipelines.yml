@@ -25,7 +25,7 @@ steps:
 # copy files task
 - task: CopyFiles@2
   inputs:
-    Contents: '**/.jar'
+    Contents: '*.jar'
     TargetFolder: '$(build.artifactstagingdirectory)'
 #copy from 'a' dircetory to project director
 #publish build artifacts task
