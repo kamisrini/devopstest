@@ -1,4 +1,5 @@
 # Maven
+
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
@@ -20,3 +21,14 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+# copy from s1 directory to 'a' (a stands for artifact) directory on a agent
+- task: CopyFiles@2
+  inputs:
+    Contents: '**/.jar'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+#copy from 'a' dircetory to project director
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'main jar file'
+    publishLocation: 'Container'
